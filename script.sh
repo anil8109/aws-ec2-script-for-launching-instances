@@ -1,28 +1,29 @@
 #!/bin/bash
 
-#store logs
+# Store logs
 exec > /var/log/user-data.log 2>&1
 
-#update the ubuntu machine
+# Update the Ubuntu machine
 sudo apt update -y
 
-#install nodejs in the machine 
-sudo apt install nodejs -y
+# Install Node.js and npm
+sudo apt install -y nodejs npm
 
-#install npm in the machine
-sudo apt install npm -y
-
-#Clone the repository
+# Clone the repository
 git clone https://github.com/anil8109/AWS-Demo-Project.git /home/ubuntu/project
 
-#cd in the folder
+# cd into the project directory
 cd /home/ubuntu/project
 
-# Install Projects
-sudo npm install
+# Install project dependencies
+npm install  # ← no need for sudo here unless you are root
 
-#install pm2
-sudo npm i -g pm2
+# Install PM2 globally
+sudo npm install -g pm2
 
-#turn up the server
-pm2 start index.js
+# Start the app with PM2
+pm2 start index.js --name aws-demo
+
+# Optional but recommended:
+pm2 save
+pm2 startup
