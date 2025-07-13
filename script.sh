@@ -25,4 +25,4 @@ sudo npm install
 sudo npm i -g pm2
 
 #turn up the server
-sudo pm2 start index.js
+pm2 start index.js
