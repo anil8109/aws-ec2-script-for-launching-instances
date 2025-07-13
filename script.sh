@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#store logs
+exec > /var/log/user-data.log 2>&1
+
 #update the ubuntu machine
 sudo apt update -y
 
